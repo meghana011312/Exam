@@ -1,0 +1,61 @@
+Task 1:
+Initial Prompt : 
+Create a multi-file C++ project for managing a fleet of vehicles.
+
+1.Vehicle.h : Define a Vehicle class with private members:
+int id
+double speed
+double temperature(°C)
+double fuel(percentage, 0 to 100)
+Include appropriate constructors, getters, and setters.
+
+2.FleetManager.h 
+Define a FleetManager class that manages a std::vector<Vehicle>. 
+Implement methods to:
+Load vehicles from a CSV file (format: id,speed,temperature,fuel)
+Compute and return average speed, average temperature, and average fuel level
+Check vehicles and print alerts:
+If temperature > 110°C, print "Vehicle \[id]: Critical Overheating"
+If fuel < 15%, print "Vehicle \[id]: Low Fuel Warning"
+
+3.main.cpp
+Load vehicle data from a CSV file
+Use FleetManager to compute and print average speed, temperature, and fuel
+Print any alerts from the fleet manager
+Make sure to include proper headers, namespaces, and comments for clarity.
+
+Unit test cases using <cassert>
+Implement the following test cases:
+1. Vehicle with temperature = 120 → must return "Critical Overheating"
+2. Vehicle with fuel = 10 → must return "Low Fuel Warning"
+3. Fleet with speeds [80, 90, 100] → average speed must be 90
+4. Boundary: temperature = 110 → must return "Critical Overheating"
+5. Boundary: fuel = 15 → must return no warning
+6. Empty dataset in FleetManager → must throw exception
+Use simple functions with assert(...) to validate conditions.Create another file for generating these test cases.
+
+Generating README file : 
+The README should include an Introduction, System Requirements (such as cassert  and required VS Code extensions), detailed explanations of the implemented classes and their functions, and sample input/output to demonstrate the system’s functionality.
+
+Concurrency : 
+Write C++ code to demonstrate concurrency in my FleetManager project.
+Requirements:
+1. Use std::thread to simulate multiple Vehicle objects updating their speed, temperature, and fuel concurrently.
+2. Use std::mutex inside FleetManager to prevent race conditions when adding vehicles and calculating average speed.
+3. Compare performance of single-threaded updates vs multi-threaded updates.
+4. Print execution time for both approaches (use <chrono>).
+Classes already available:
+Vehicle (id, speed, temperature, fuel, checkStatus())
+FleetManager (addVehicle(), getAverageSpeed(), thread-safe with std::mutex)
+Steps:
+Create 100 vehicles with random speed/temp/fuel values.
+In single-thread mode: update all vehicles sequentially and measure time.
+In multi-thread mode: launch multiple threads (e.g., 4–8) to update vehicles concurrently, measure time.Ensure FleetManager uses std::mutex to protect shared data.
+Print results showing speedup from multi-threading.
+
+Refactoring : 
+Go through all files in this folder and refactor them to improve readability, maintainability, and performance.
+
+Task 2: 
+Review the code for issues such as lack of OOP design, use of magic numbers, missing input validation, no modularization, and hardcoded arrays. 
+Refactor the code into an OOP design with classes (e.g., Vehicle, FleetManager) using encapsulation, constructors, const correctness, and exception handling. Also implement file input with proper error handling, In code review.cpp file.
